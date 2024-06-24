@@ -1,3 +1,4 @@
+
 const initialState = {
   good: 0,
   ok: 0,
@@ -5,10 +6,18 @@ const initialState = {
 }
 
 const handleType = (state, type) => {
-  // console.log('handleType', type, state)
+  console.log('handleType', type, state)
   let newState = { ...state }
   newState[type]++
   return newState
+}
+
+const handleReset = (state) => {
+  return { ...initialState }
+}
+
+const clickAction = (clickType) => {
+  return { type: clickType }
 }
 
 const counterReducer = (state = initialState, action) => {
@@ -20,10 +29,10 @@ const counterReducer = (state = initialState, action) => {
       return handleType(state, 'ok')
     case 'BAD':
       return handleType(state, 'bad')
-    case 'ZERO':
-      return { ... initialState}
+    case 'ZERO': 
+      return handleReset(state)
     default: return state
   }
 }
 
-export { counterReducer }
+export { counterReducer, clickAction }
