@@ -63,3 +63,15 @@ export default defineConfig({
   }
 })
 ```
+
+## Redux-sovelluksen kommunikointi palvelimen kanssa
+
+Asennetaan JSOn server
+```
+npm install json-server --save-dev
+npm install axios
+```
+
+Package.json skripteihin lisää `"server": "json-server -p3001 --watch db.json"` 
+
+### Tehtävät 6.14.-6.15

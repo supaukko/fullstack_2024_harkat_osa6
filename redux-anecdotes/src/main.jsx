@@ -7,6 +7,7 @@ import filterReducer from './reducers/filterReducer'
 import notificationReducer from './reducers/notificationReducer'
 import { configureStore } from '@reduxjs/toolkit'
 
+
 const store = configureStore({
   reducer: {
   anecdotes: anecdoteReducer,
@@ -22,6 +23,12 @@ const reducer = combineReducers({
 })
 const store = createStore(reducer)
 */
+
+/**
+ * await toimii ainoastaan async-funktioiden sisällä, ja main.jsx:ssä oleva koodi ei
+ * ole funktiossa, joten yksinkertaisuuden vuoksi ei käytetä async:iä.
+ */
+
 
 console.log('main', store.getState())
 
