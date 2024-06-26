@@ -9,13 +9,14 @@ const Notification = () => {
     borderWidth: 1
   }
 
-  if (!notification.visible) {
-    return null
-  }
   return (
+    <>
+    { notification.visible &&
       <div style={style}>
         {notification.msg}
       </div>
+    }
+    </>
   )
 }
 
