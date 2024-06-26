@@ -4,22 +4,26 @@ import {
   useAnecdotes,
   useUpdateAnecdote,
   useCreateAnecdote } from './hooks/anecdotes'
+import { useAddNotification } from './NotificationContext';
 
 const App = () => {
 
   const { isPending, isError, data, error } = useAnecdotes()
   const createAnecdote = useCreateAnecdote();
   const updateAnecdote = useUpdateAnecdote();
+  const addNotification = useAddNotification();
 
   const handleVote = (anecdote) => {
     const updatedAnecdote = {...anecdote, votes: anecdote.votes + 1}
     console.log('handleVote', updatedAnecdote)
     updateAnecdote.mutate( updatedAnecdote )
+    addNotification(`anecdote '${updatedAnecdote.content}' voted`)
   }
 
   const handleCreateAnecdote = (anecdote) => {
     console.log('handleCreateAnecdote', anecdote)
     createAnecdote.mutate(anecdote)
+    addNotification(`anecdote '${anecdote.content}' created`)
   }
 
   if (isPending) {

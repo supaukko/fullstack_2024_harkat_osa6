@@ -8,3 +8,9 @@ npm install @tanstack/react-query
 ```
 
 ## Fullstackopen - osa 6 - React Query useReducer ja context - tehtävät 6.20 - 6.22
+
+## useReducer
+
+Vaikka sovellus siis käyttäisi React Queryä, tarvitaan siis yleensä jonkinlainen ratkaisu selaimen muun tilan (esimerkiksi lomakkeiden) hallintaan. Melko usein useState:n avulla muodostettu tila on riittävä ratkaisu. Reduxin käyttö on toki mahdollista mutta on olemassa myös muita vaihtoehtoja
+
+### Fullstackopen - osa 6 - React Query useReducer ja context - tehtävät 6.23 - 6.24
