@@ -13,17 +13,27 @@ const App = () => {
   const updateAnecdote = useUpdateAnecdote();
   const addNotification = useAddNotification();
 
-  const handleVote = (anecdote) => {
-    const updatedAnecdote = {...anecdote, votes: anecdote.votes + 1}
-    console.log('handleVote', updatedAnecdote)
-    updateAnecdote.mutate( updatedAnecdote )
-    addNotification(`anecdote '${updatedAnecdote.content}' voted`)
+  const handleVote = async (anecdote) => {
+    try {
+      const updatedAnecdote = {...anecdote, votes: anecdote.votes + 1}
+      // console.log('handleVote', updatedAnecdote)
+      await updateAnecdote.mutateAsync( updatedAnecdote )
+      addNotification(`anecdote '${updatedAnecdote.content}' voted`)
+    }
+    catch(error) {
+      addNotification(`Error '${error.response.data.error}'`)
+    }
   }
 
-  const handleCreateAnecdote = (anecdote) => {
+  const handleCreateAnecdote = async (anecdote) => {
     console.log('handleCreateAnecdote', anecdote)
-    createAnecdote.mutate(anecdote)
-    addNotification(`anecdote '${anecdote.content}' created`)
+    try {
+      await createAnecdote.mutateAsync(anecdote)
+      addNotification(`anecdote '${anecdote.content}' created`)
+    }
+    catch(error) {
+      addNotification(`Error '${error.response.data.error}'`)
+    }
   }
 
   if (isPending) {

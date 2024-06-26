@@ -41,6 +41,9 @@ const useUpdateAnecdote = () => {
       else {
         queryClient.invalidateQueries({ queryKey: [KEY] })
       }
+    },
+    onError: (error) => {
+      console.error('Update error:', error.response.data.error);
     }
   })
 }
@@ -59,6 +62,9 @@ const useCreateAnecdote = () => {
       else {
         queryClient.invalidateQueries({ queryKey: [KEY] })
       }
+    },
+    onError: (error) => {
+      console.error('Create error:', error.response.data.error);
     }
   })
 }

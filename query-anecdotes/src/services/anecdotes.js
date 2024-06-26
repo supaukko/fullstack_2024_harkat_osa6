@@ -13,14 +13,12 @@ const get = async (id) => {
 }
 
 const create = async newObject => {
-  const response = await axios.post(baseUrl, newObject)
-  return response.data
+    const response = await axios.post(baseUrl, newObject)
+    return response.data
 }
 
 const update = async (object) => {
-  // console.log('++ update', object)
   const response = await axios.put(`${baseUrl}/${object.id}`, object)
-  // console.log('-- update', response.data)
   return response.data
 }
 
