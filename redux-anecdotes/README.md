@@ -75,3 +75,7 @@ npm install axios
 Package.json skripteihin lisää `"server": "json-server -p3001 --watch db.json"` 
 
 ### Tehtävät 6.14.-6.15
+
+Redux-storen alustus Redux Thunk ‑kirjaston avulla voi lisätä asynkronisiä funktiota actioniin, jotka ensin odottavat jonkin asynkronisen toimenpiteen valmistumista ja vasta sen jälkeen dispatchaavat varsinaisen actionin.
+
+ Huom. Redux Thunk-kirjaston käyttö ei vaadi ylimääräistä konfiguraatiota eikä asennusta, kun Redux-store on luotu Redux Toolkitin configureStore-funktiolla

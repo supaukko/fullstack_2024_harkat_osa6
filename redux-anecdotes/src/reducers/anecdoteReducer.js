@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { showNotification, hideNotification } from '../reducers/notificationReducer'
+import { setNotification } from '../reducers/notificationReducer'
+import anecdoteService from '../services/anecdotes'
 
 /*
 const anecdotesAtStart = [
@@ -80,13 +81,10 @@ const anecdoteSlice = createSlice({
       return state.sort((a, b) => b.votes - a.votes)
     },
     updateAnecdote(state, action) {
-      const id = action.payload.id
-      let anecdote = state.find(item => item.id === id)
-      if (anecdote) {
-        anecdote = {...action.payload}
-        console.log('updateAnecdote', anecdote)
-        return state.sort((a, b) => b.votes - a.votes)
-      }
+      const changedAnecdote = action.payload
+      return state
+        .map(item => item.id !== changedAnecdote.id ? item : changedAnecdote)
+        .sort((a, b) => b.votes - a.votes)
     },
     appendAnecdote(state, action) {
       state.push(action.payload)
@@ -107,18 +105,26 @@ export const {
   setAnecdotes } = anecdoteSlice.actions
 export default anecdoteSlice.reducer
 
-export const createAnecdoteAndNotify = (dispatch, content) => {
-  dispatch(createAnecdote(content));
-  dispatch(showNotification(`You added '${content}'`));
-  setTimeout(() => {
-    dispatch(hideNotification());
-  }, 5000);
+export const createAnecdoteAndNotify = (content) => {
+  return async (dispatch) => {
+    const anecdote = await anecdoteService.create({ content, votes: 0 })
+    dispatch(createAnecdote(anecdote));
+    dispatch(setNotification(`You added '${anecdote.content}'`, 5))
+  }
 };
 
-export const updateAnecdoteAndNotify = (dispatch, anecdote) => {
-  dispatch(updateAnecdote(anecdote));
-  dispatch(showNotification(`You voted '${anecdote.content}'`));
-  setTimeout(() => {
-    dispatch(hideNotification());
-  }, 5000);
-};
+export const updateAnecdoteAndNotify = (anecdote) => {
+  return async (dispatch) => {
+    const updatedAnecdote = await anecdoteService.update(anecdote)
+    // console.log('updateAnecdoteAndNotify', updatedAnecdote)
+    dispatch(updateAnecdote(updatedAnecdote));
+    dispatch(setNotification(`You voted '${updatedAnecdote.content}'`, 5))
+  }
+}
+
+export const initializeAnecdotes = () => {
+  return async dispatch => {
+    const anecdotes = await anecdoteService.getAll()
+    dispatch(setAnecdotes(anecdotes))
+  }
+}
