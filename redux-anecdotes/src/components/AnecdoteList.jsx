@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { increaseVotes } from '../reducers/anecdoteReducer'
+import { increaseVotesAndNotify } from '../reducers/anecdoteReducer'
 import Anecdote from './Anecdote'
 
 const AnecdoteList = () => {
@@ -18,9 +18,9 @@ const AnecdoteList = () => {
         <Anecdote
           key={anecdote.id}
           anecdote={anecdote}
-          handleClick={() => 
-            dispatch(increaseVotes(anecdote.id))
-          }
+          // Slicen kutsu vastaa tätä:
+          // dispatch({ type: 'anecdotes/increaseVotes', payload: anecdote })
+          handleClick={() => increaseVotesAndNotify(dispatch, anecdote)}
         />
       )}
     </div>

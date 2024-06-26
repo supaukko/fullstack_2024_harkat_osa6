@@ -22,3 +22,44 @@ https://fullstackopen.com/osa6/flux_arkkitehtuuri_ja_redux#tehtavat-6-3-6-8
 https://fullstackopen.com/osa6/monta_reduseria
 
 
+### Redux Toolkit
+Toolkitillä vältetään turha toisto. Esim. configureStore-funktion configureStore funktiolla päästään eroon combineReducers funktiosta. configureStore-funktion käytöstä on myös monia muita hyötyjä, kuten kehitystyökalujen ja usein käytettyjen kirjastojen vaivaton käyttöönotto ilman erillistä konfiguraatiota. 
+
+Asennetaan Redux toolkit
+```
+npm install @reduxjs/toolkit
+```
+
+#### Testaus
+
+https://fullstackopen.com/osa5/react_sovellusten_testaaminen
+
+```
+npm install --save-dev vitest jsdom
+npm install --save-dev @testing-library/react @testing-library/jest-dom
+```
+
+Tehdään projektin juureen testSetup.js tiedosto
+```
+import { afterEach } from 'vitest'
+import { cleanup } from '@testing-library/react'
+import '@testing-library/jest-dom/vitest'
+
+afterEach(() => {
+  cleanup()
+})
+```
+
+Päivitetään vite.config.js tiedosto. `globals: true` määrittelyn avulla testeissä ei 
+tarvitse importoida erikseen describe, test etc. kirjastoja
+
+```
+export default defineConfig({
+  // ...
+  test: {
+    environment: 'jsdom',
+    globals: true,
+    setupFiles: './testSetup.js', 
+  }
+})
+```
