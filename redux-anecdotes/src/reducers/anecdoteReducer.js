@@ -109,7 +109,7 @@ export const createAnecdoteAndNotify = (content) => {
   return async (dispatch) => {
     const anecdote = await anecdoteService.create({ content, votes: 0 })
     dispatch(createAnecdote(anecdote));
-    dispatch(setNotification(`You added '${anecdote.content}'`, 5))
+    dispatch(setNotification(`new anecdote '${anecdote.content}'`, 5))
   }
 };
 
@@ -118,7 +118,7 @@ export const updateAnecdoteAndNotify = (anecdote) => {
     const updatedAnecdote = await anecdoteService.update(anecdote)
     // console.log('updateAnecdoteAndNotify', updatedAnecdote)
     dispatch(updateAnecdote(updatedAnecdote));
-    dispatch(setNotification(`You voted '${updatedAnecdote.content}'`, 5))
+    dispatch(setNotification(`you voted '${updatedAnecdote.content}'`, 5))
   }
 }
 
