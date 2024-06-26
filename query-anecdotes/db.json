@@ -1,7 +1,7 @@
 {
   "anecdotes": [
     {
-      "content": "If it hurts, do it more often..",
+      "content": "If it hurts, do it more often",
       "id": "47145",
       "votes": 0
     },
@@ -11,7 +11,7 @@
       "votes": 0
     },
     {
-      "content": "The first 90 percent of the code accounts for the first 10 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.",
+      "content": "The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.",
       "id": "69581",
       "votes": 0
     },
@@ -23,42 +23,17 @@
     {
       "content": "Premature optimization is the root of all evil.",
       "id": "25170",
-      "votes": 3
+      "votes": 0
     },
     {
       "content": "Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.",
       "id": "98312",
-      "votes": 2
+      "votes": 0
     },
     {
-      "id": "baf8",
-      "content": "hemmo",
-      "votes": 14
-    },
-    {
-      "id": "4020",
-      "content": "hemmo2",
-      "votes": 1
-    },
-    {
-      "id": "328e",
-      "content": "hemmo4",
-      "votes": 1
-    },
-    {
-      "id": "240b",
-      "content": "hemmo10",
-      "votes": 1
-    },
-    {
-      "id": "3172",
-      "content": "hemmo15",
-      "votes": 17
-    },
-    {
-      "id": "ba5e",
-      "content": "hemmo33",
-      "votes": 1
+      "content": "foobar123",
+      "votes": 10,
+      "id": "81BvB19"
     }
   ]
 }
